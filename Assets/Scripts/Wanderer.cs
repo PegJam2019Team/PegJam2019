@@ -60,11 +60,14 @@ public class Wanderer : MonoBehaviour
             //particle hit, send off to sun or moon
             //sounds
             //event
+            if (OnCollectWanderer != null)
+            {
+                OnCollectWanderer(activator.isDark);
+            }
+
+
+
             Destroy(gameObject);
-            //if(OnCollectWanderer != null)
-            //{
-            //    OnCollectWanderer(activator.isDark);
-            //}
         }
     }
 }

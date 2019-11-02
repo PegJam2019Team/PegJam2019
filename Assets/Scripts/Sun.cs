@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sun : MonoBehaviour
 {
     [Range(1, 10)]
-    private float closeness;
+    private float closeness = 0;
 
     float neglectTime = 10;
     float neglectTimer = 0;
@@ -34,16 +34,18 @@ public class Sun : MonoBehaviour
     {
         if (neglectTimer >= neglectTime)
         {
-            closeness -= Time.deltaTime * 0.05f;
+            ChangeCloseness(-Time.deltaTime * 0.25f);
         }
+
+        neglectTimer += Time.deltaTime;
     }
 
     void AddValue(bool isDark)
     {
         if (!isDark)
         {
-            ChangeCloseness(1);
             neglectTimer = 0;
+            ChangeCloseness(1);
         }
     }
 
@@ -51,6 +53,9 @@ public class Sun : MonoBehaviour
     {
         closeness += amount;
 
+        Vector3 newPos = new Vector3(transform.position.x, transform.position.y, 60 - (closeness * 2));
+
+        transform.position = newPos;
         if (OnSunChanged != null)
         {
             OnSunChanged(closeness);

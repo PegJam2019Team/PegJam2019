@@ -15,17 +15,23 @@ public class SunProgressBar : MonoBehaviour
 
     private void OnEnable()
     {
-        
+        Sun.OnSunChanged += UpdateSlider;
     }
 
     private void OnDisable()
     {
-        
+        Sun.OnSunChanged -= UpdateSlider;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void UpdateSlider(float sliderAmount)
+    {
+        float sliderPercent = sliderAmount / 10;
+        progressBar.value = sliderPercent;
     }
 }
