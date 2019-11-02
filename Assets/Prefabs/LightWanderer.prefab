@@ -4783,7 +4783,8 @@ GameObject:
   - component: {fileID: 7798674957962581304}
   - component: {fileID: 7798674957962581307}
   - component: {fileID: 8564025962333344780}
-  m_Layer: 0
+  - component: {fileID: 1171255285485034873}
+  m_Layer: 9
   m_Name: LightWanderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9597,3 +9598,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDark: 0
+--- !u!135 &1171255285485034873
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7798674957962581306}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.0700002
+  m_Center: {x: 0, y: 0, z: 0}

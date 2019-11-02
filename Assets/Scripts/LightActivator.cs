@@ -7,17 +7,18 @@ public class LightActivator : MonoBehaviour
     public bool isDark;
     private float dotToOther;
     bool active = false;
-    
+
+    public bool Active { get => active; }
+
     Transform sun;
-    Renderer rend;
+    //Renderer rend;
     ParticleSystem particles;
     ParticleSystem.EmissionModule emission;
 
     void Awake()
     {
-        rend = GetComponent<Renderer>();
+        //rend = GetComponent<Renderer>();
         particles = GetComponent<ParticleSystem>();
-        rend = GetComponent<Renderer>();
 
         emission = particles.emission;
     }
