@@ -14,8 +14,6 @@ public class Wanderer : MonoBehaviour
 
     Rigidbody rigidbody;
 
-    
-
     Collider col;
     LightActivator activator;
 
@@ -38,8 +36,6 @@ public class Wanderer : MonoBehaviour
 
     void Update()
     {
-
-
         // Calculate movement:
         float inputX = Mathf.Cos(Time.time);
         float inputY = Mathf.Sin(Time.time);
