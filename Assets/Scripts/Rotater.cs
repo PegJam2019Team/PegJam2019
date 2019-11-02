@@ -14,7 +14,7 @@ public class Rotater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Mathf.Sin(speedX * Time.timeSinceLevelLoad), speedY, speedZ);
+        transform.Rotate(Mathf.Sin(speedX), speedY, speedZ);
         
     }
 }
