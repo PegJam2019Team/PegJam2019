@@ -49,6 +49,7 @@ public class Moon : MonoBehaviour
         }
     }
 
+    
     void ChangeCloseness(float amount)
     {
         closeness += amount;
@@ -58,10 +59,18 @@ public class Moon : MonoBehaviour
             closeness = 0;
         }
 
+        if(closeness > 10)
+        {
+            closeness = 10;
+        }
 
-        Vector3 newPos = new Vector3(transform.position.x, transform.position.y, -60 + (closeness * 2));
+
+        Vector3 newPos = new Vector3(transform.localPosition.x, transform.localPosition .y, -80 + (closeness * 4));
 
         transform.localPosition = newPos;
+
+        float scale = 10 + (closeness * 4);
+        transform.localScale = new Vector3(scale, scale ,scale);
 
         if (OnMoonChanged != null)
         {

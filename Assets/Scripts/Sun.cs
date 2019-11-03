@@ -60,7 +60,7 @@ public class Sun : MonoBehaviour
             closeness = 0;
         }
 
-        Vector3 newPos = new Vector3(transform.localPosition.x, transform.localPosition .y, 60 - (closeness * 2));
+        Vector3 newPos = new Vector3(transform.localPosition.x, transform.localPosition .y, 80 - (closeness * 4));
 
         transform.localPosition = newPos;
 
