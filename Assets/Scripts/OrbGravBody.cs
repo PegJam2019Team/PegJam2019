@@ -9,6 +9,8 @@ public class OrbGravBody : MonoBehaviour
     Rigidbody rigidbody;
     public bool isDark;
 
+    public AudioClip collect;
+
     void Awake()
     {
         planet = GameObject.FindGameObjectWithTag(isDark? "Moon":"Sun").GetComponent<GravityAttractor>();
@@ -18,6 +20,8 @@ public class OrbGravBody : MonoBehaviour
         rigidbody.useGravity = false;
         rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         rigidbody.AddForce(transform.up * 50f, ForceMode.Impulse);
+
+        AudioSource.PlayClipAtPoint(collect, transform.position, 1f);
     }
 
     void FixedUpdate()
