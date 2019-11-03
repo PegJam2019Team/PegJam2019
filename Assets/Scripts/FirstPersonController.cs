@@ -13,6 +13,8 @@ public class FirstPersonController : MonoBehaviour
     public float jumpForce = 220;
     public LayerMask groundedMask;
 
+    public AudioClip[] stepSounds;
+
     // System vars
     bool grounded;
     Vector3 moveAmount;
@@ -20,6 +22,8 @@ public class FirstPersonController : MonoBehaviour
     float verticalLookRotation;
     Rigidbody rigidbody;
 
+    float walkSoundTime = 0.5f;
+    float walkSoundTimer = 0f;
 
     void Awake()
     {
@@ -30,7 +34,7 @@ public class FirstPersonController : MonoBehaviour
     }
 
     void Update()
-    {        
+    {
         // Calculate movement:
         float inputX = Input.GetAxisRaw("Horizontal");
         float inputY = Input.GetAxisRaw("Vertical");
@@ -42,13 +46,21 @@ public class FirstPersonController : MonoBehaviour
         Vector3 targetMoveAmount = moveDir * walkSpeed;
         moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, .15f);
 
-        if(targetMoveAmount.magnitude == 0)
+        if (targetMoveAmount.magnitude == 0)
         {
             anim.SetBool("Walk", false);
         }
         else
         {
             anim.SetBool("Walk", true);
+
+            walkSoundTimer += Time.deltaTime;
+
+            if (walkSoundTimer >= walkSoundTime)
+            {
+                walkSoundTimer = 0f;
+                AudioSource.PlayClipAtPoint(stepSounds[Random.Range(0, 10)], transform.position, 0.1f);
+            }
         }
         // Jump
         if (Input.GetButtonDown("Jump"))

@@ -7,7 +7,7 @@ public class Sun : MonoBehaviour
     [Range(0, 13)]
     public float closeness = 0;
 
-    float neglectTime = 15;
+    float neglectTime = 35;
     float neglectTimer = 0;
 
     public delegate void SunChangedDelegate(float newValue);
