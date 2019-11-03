@@ -11,22 +11,21 @@ public class SoundActivator : MonoBehaviour
     public bool Active { get => active; }
 
     Transform sun;
-    //Renderer rend;
-    ParticleSystem particles;
-    ParticleSystem.EmissionModule emission;
+    AudioSource audio;
+
+    public float transitionTime = 2f;
+    float timer = 0f;
 
     void Awake()
     {
         //rend = GetComponent<Renderer>();
-        particles = GetComponent<ParticleSystem>();
-
-        emission = particles.emission;
+        audio = GetComponent<AudioSource>();
+        audio.volume = 0f;
     }
 
     void Start()
     {
         sun = FindObjectOfType<Sun>().transform;
-        emission.enabled = false;
     }
 
     // Update is called once per frame
@@ -44,11 +43,14 @@ public class SoundActivator : MonoBehaviour
 
         if (active)
         {
-            emission.enabled = true;
+            timer += Time.deltaTime;
+
+            audio.volume = Mathf.Lerp(0, 1, timer);
         }
         else
         {
-            emission.enabled = false;
+            timer += Time.deltaTime;
+            audio.volume = Mathf.Lerp(1, 0, timer);
         }
     }
 
@@ -56,5 +58,10 @@ public class SoundActivator : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + transform.up);
+    }
+
+    public IEnumerable FadeMusic(float time)
+    {
+        yield return null;
     }
 }
