@@ -65,9 +65,9 @@ public class Moon : MonoBehaviour
             closeness = 0;
         }
 
-        if(closeness > 10)
+        if(closeness > 13)
         {
-            closeness = 10;
+            closeness = 13;
         }
 
         if (OnMoonChanged != null)

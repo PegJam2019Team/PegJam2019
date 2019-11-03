@@ -28,7 +28,7 @@ public class Shake : MonoBehaviour
 
     void OnEnable()
     {
-        
+
     }
 
     void Update()
@@ -39,10 +39,21 @@ public class Shake : MonoBehaviour
         //{
         if (doShake)
         {
+            shakeAmount /= 5f;
             camComposer.m_TrackedObjectOffset = originalPos + Random.insideUnitSphere * shakeAmount;
-            camComposer.m_DeadZoneHeight = 2 - (shakeAmount * 2);
-            camComposer.m_DeadZoneWidth = 2 - (shakeAmount * 2);
-            
+            if (shakeAmount > 0)
+            {
+                camComposer.m_DeadZoneHeight = 0f;
+                camComposer.m_DeadZoneWidth = 0f;
+            }
+            else
+            {
+                camComposer.m_DeadZoneHeight = 0.2f;
+                camComposer.m_DeadZoneWidth = 0.2f;
+            }
+            //camComposer.m_DeadZoneHeight = 0.2f - (shakeAmount * 0.2f);
+            //camComposer.m_DeadZoneWidth = 0.2f - (shakeAmount * 0.2f);
+
 
             //shakeAmount -= Time.deltaTime;
         }

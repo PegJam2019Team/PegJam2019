@@ -5,6 +5,8 @@ using System.Collections;
 public class FirstPersonController : MonoBehaviour
 {
 
+    private Animator anim;
+
     // public vars
     public float rotateSpeed = 1;
     public float walkSpeed = 6;
@@ -24,6 +26,7 @@ public class FirstPersonController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         rigidbody = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -39,6 +42,14 @@ public class FirstPersonController : MonoBehaviour
         Vector3 targetMoveAmount = moveDir * walkSpeed;
         moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, .15f);
 
+        if(targetMoveAmount.magnitude == 0)
+        {
+            anim.SetBool("Walk", false);
+        }
+        else
+        {
+            anim.SetBool("Walk", true);
+        }
         // Jump
         if (Input.GetButtonDown("Jump"))
         {

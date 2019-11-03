@@ -7,25 +7,36 @@ public class SoundActivator : MonoBehaviour
     public bool isDark;
     private float dotToOther;
     bool active = false;
+    bool wasActive = false;
 
     public bool Active { get => active; }
 
     Transform sun;
-    AudioSource audio;
+    public AudioSource audioDay, audioNight;
 
     public float transitionTime = 2f;
     float timer = 0f;
 
+    private IEnumerator fadeInDay;
+    private IEnumerator fadeOutDay;
+    private IEnumerator fadeInNight;
+    private IEnumerator fadeOutNight;
+
     void Awake()
     {
         //rend = GetComponent<Renderer>();
-        audio = GetComponent<AudioSource>();
-        audio.volume = 0f;
+        //audio = GetComponent<AudioSource>();
+        audioDay.volume = 0f;
+        audioNight.volume = 0f;
     }
 
     void Start()
     {
         sun = FindObjectOfType<Sun>().transform;
+        fadeInDay = FadeMusic(true, audioDay);
+        fadeOutDay = FadeMusic(false, audioDay);
+        fadeInNight = FadeMusic(true, audioNight);
+        fadeOutNight = FadeMusic(false, audioNight);
     }
 
     // Update is called once per frame
@@ -37,31 +48,51 @@ public class SoundActivator : MonoBehaviour
 
         active = (isDark) ? dotToOther > -0.4f : dotToOther < -0.5f;
 
-        //rend.enabled = active;
-
-        //Debug.Log(active);
-
         if (active)
         {
-            timer += Time.deltaTime;
+            //StopCoroutine(fadeInNight);
+            //StopCoroutine(fadeOutDay);
 
-            audio.volume = Mathf.Lerp(0, 1, timer);
+            //StartCoroutine(fadeInDay);
+            //StartCoroutine(fadeOutNight);
+            audioDay.volume += Time.deltaTime / transitionTime;
+            audioNight.volume -= Time.deltaTime / transitionTime;
+            //timer += Time.deltaTime;
+
+            //audio.volume = Mathf.Lerp(0, 1, timer);
         }
         else
         {
-            timer += Time.deltaTime;
-            audio.volume = Mathf.Lerp(1, 0, timer);
+            //StopCoroutine(fadeInDay);
+            //StopCoroutine(fadeOutNight);
+
+            //StartCoroutine(fadeInNight);
+            //StartCoroutine(fadeOutDay);
+            audioDay.volume -= Time.deltaTime / transitionTime;
+            audioNight.volume += Time.deltaTime / transitionTime;
+            //timer += Time.deltaTime;
+            //audio.volume = Mathf.Lerp(1, 0, timer);
         }
+
+        //if(timer >= transitionTime)
+        //{
+        //    timer = 0;
+        //}
     }
 
-    private void OnDrawGizmos()
+    public IEnumerator FadeMusic(bool fadeIn, AudioSource audio)
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + transform.up);
-    }
-
-    public IEnumerable FadeMusic(float time)
-    {
-        yield return null;
+        for (float ft = 0; ft >= 1f; ft += 0.1f / transitionTime)
+        {
+            if (fadeIn)
+            {
+            audio.volume = ft;
+            }
+            else
+            {
+                audio.volume = 1 - ft;
+            }
+            yield return new WaitForSeconds(ft);
+        }
     }
 }

@@ -32,17 +32,19 @@ public class EndState : MonoBehaviour
         {
             Debug.Log("Crash Into Planet!");
 
-            float shakeAmount = 0f;
-            if(sun.closeness > 10)
-            {
-                shakeAmount = ((sun.closeness - 10) / 3);
-            }
-            if (moon.closeness > 10)
-            {
-                shakeAmount = ((moon.closeness - 10) / 3);
-            }
-
-            shake.DoShake(shakeAmount);
+            
         }
+
+        float shakeAmount = 0f;
+        if (sun.closeness > 10)
+        {
+            shakeAmount = ((sun.closeness - 10) / 3);
+        }
+        if (moon.closeness > 10)
+        {
+            shakeAmount = ((moon.closeness - 10) / 3);
+        }
+
+        shake.DoShake(shakeAmount);
     }
 }

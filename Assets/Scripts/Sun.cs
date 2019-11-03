@@ -64,6 +64,11 @@ public class Sun : MonoBehaviour
             closeness = 0;
         }
 
+        if (closeness > 13)
+        {
+            closeness = 13;
+        }
+
         if (OnSunChanged != null)
         {
             OnSunChanged(closeness);

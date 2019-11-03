@@ -5,6 +5,8 @@ public class GravityAttractor : MonoBehaviour
 {
 
     public float gravity = -9.8f;
+    public enum Attractortype { Player, Dark, Light}
+    public Attractortype typeToAttract;
 
 
     public void Attract(Rigidbody body)
