@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Moon : MonoBehaviour
 {
-    [Range(1, 10)]
-    private float closeness;
+    [Range(0, 10)]
+    public float closeness;
 
-    float neglectTime = 10;
+    float neglectTime = 25;
     float neglectTimer = 0;
 
     public delegate void MoonChangedDelegate(float newValue);
@@ -36,10 +36,6 @@ public class Moon : MonoBehaviour
         {
             ChangeCloseness(-Time.deltaTime * 0.25f);
         }
-        if(closeness < 0)
-        {
-            closeness = 0;
-        }
 
         neglectTimer += Time.deltaTime;
     }
@@ -57,9 +53,15 @@ public class Moon : MonoBehaviour
     {
         closeness += amount;
 
+        if (closeness < 0)
+        {
+            closeness = 0;
+        }
+
+
         Vector3 newPos = new Vector3(transform.position.x, transform.position.y, -60 + (closeness * 2));
 
-        transform.position = newPos;
+        transform.localPosition = newPos;
 
         if (OnMoonChanged != null)
         {

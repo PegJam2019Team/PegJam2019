@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Sun : MonoBehaviour
 {
-    [Range(1, 10)]
-    private float closeness = 0;
+    [Range(0, 10)]
+    public float closeness = 0;
 
-    float neglectTime = 10;
+    float neglectTime = 25;
     float neglectTimer = 0;
 
     public delegate void SunChangedDelegate(float newValue);
@@ -37,6 +37,8 @@ public class Sun : MonoBehaviour
             ChangeCloseness(-Time.deltaTime * 0.25f);
         }
 
+
+
         neglectTimer += Time.deltaTime;
     }
 
@@ -53,9 +55,15 @@ public class Sun : MonoBehaviour
     {
         closeness += amount;
 
-        Vector3 newPos = new Vector3(transform.position.x, transform.position.y, 60 - (closeness * 2));
+        if (closeness < 0)
+        {
+            closeness = 0;
+        }
 
-        transform.position = newPos;
+        Vector3 newPos = new Vector3(transform.localPosition.x, transform.localPosition .y, 60 - (closeness * 2));
+
+        transform.localPosition = newPos;
+
         if (OnSunChanged != null)
         {
             OnSunChanged(closeness);
