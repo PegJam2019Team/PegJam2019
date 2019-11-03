@@ -9659,6 +9659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDark: 0
+  ring: {fileID: 1596665120491914661, guid: ae659abfb315fca40be7abd7aa48a476, type: 3}
   collect: {fileID: 8300000, guid: 6e4ac14d8a8cad246a3b4e7c78411357, type: 3}
 --- !u!82 &3002781436445089278
 AudioSource:
@@ -9693,47 +9694,20 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 0.9955292
-      inSlope: -1.9599881
-      outSlope: -1.9599881
+      inSlope: -0.24408089
+      outSlope: -0.24408089
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.8814589
+      outWeight: 0.16207375
     - serializedVersion: 3
-      time: 0.1
-      value: 0.48658752
-      inSlope: -5.0019917
-      outSlope: -5.0019917
+      time: 0.6650421
+      value: 0.7463455
+      inSlope: -0.77215034
+      outSlope: -0.77215034
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.2
-      value: 0.23658752
-      inSlope: -1.2504979
-      outSlope: -1.2504979
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.4
-      value: 0.111587524
-      inSlope: -0.31262448
-      outSlope: -0.31262448
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.8
-      value: 0.049087524
-      inSlope: -0.07815612
-      outSlope: -0.07815612
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
+      inWeight: 0.19368309
       outWeight: 0
     - serializedVersion: 3
       time: 1

@@ -5,9 +5,12 @@ public class Wanderer : MonoBehaviour
 {
     // public vars
     public float rotateSpeed = 1;
-    public float walkSpeed = 6;
+    private float walkSpeed = 6;
     public LayerMask groundedMask;
     public GameObject CollectedOrb;
+
+    float wanderTime = 2f, wanderTimer = 0f;
+    float wanderInputX, wanderInputY;
 
     // System vars
     Vector3 moveAmount;
@@ -37,9 +40,18 @@ public class Wanderer : MonoBehaviour
 
     void Update()
     {
+        wanderTimer += Time.deltaTime;
+
+        if(wanderTimer >= wanderTime)
+        {
+            wanderInputX = Random.Range(-1f, 1f);
+            wanderInputY = Random.Range(-1f, 1f);
+
+            wanderTimer = 0f;
+        }
         // Calculate movement:
-        float inputX = Mathf.Cos(Time.time);
-        float inputY = Mathf.Sin(Time.time);
+        float inputX = wanderInputX;
+        float inputY = wanderInputY;
 
         Vector3 moveDir = new Vector3(inputX, 0, inputY).normalized;
         Vector3 targetMoveAmount = moveDir * walkSpeed;

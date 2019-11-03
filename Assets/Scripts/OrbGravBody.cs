@@ -8,6 +8,7 @@ public class OrbGravBody : MonoBehaviour
     GravityAttractor planet;
     Rigidbody rigidbody;
     public bool isDark;
+    public ParticleSystem ring;
 
     public AudioClip collect;
 
@@ -36,6 +37,7 @@ public class OrbGravBody : MonoBehaviour
     {
         if(other.transform == planet.transform)
         {
+            Instantiate(ring, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
