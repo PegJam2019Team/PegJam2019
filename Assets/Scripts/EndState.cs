@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndState : MonoBehaviour
 {
@@ -25,14 +26,14 @@ public class EndState : MonoBehaviour
         if(sun.closeness == 10 && moon.closeness == 10)
         {
             //end the game!
-            Debug.Log("You win!");
+            //Debug.Log("You win!");
+            SceneManager.LoadScene(0);
         }
 
         if(sun.closeness >= 13 || moon.closeness >= 13)
         {
-            Debug.Log("Crash Into Planet!");
-
-            
+            //Debug.Log("Crash Into Planet!");
+            SceneManager.LoadScene(0);
         }
 
         float shakeAmount = 0f;
