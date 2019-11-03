@@ -7,6 +7,7 @@ public class Wanderer : MonoBehaviour
     public float rotateSpeed = 1;
     public float walkSpeed = 6;
     public LayerMask groundedMask;
+    public GameObject CollectedOrb;
 
     // System vars
     Vector3 moveAmount;
@@ -65,8 +66,8 @@ public class Wanderer : MonoBehaviour
                 OnCollectWanderer(activator.isDark);
             }
 
-
-
+            Instantiate(CollectedOrb, transform.position, transform.rotation);
+            
             Destroy(gameObject);
         }
     }

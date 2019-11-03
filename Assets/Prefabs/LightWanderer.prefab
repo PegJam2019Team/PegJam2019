@@ -9560,6 +9560,8 @@ MonoBehaviour:
   groundedMask:
     serializedVersion: 2
     m_Bits: 0
+  CollectedOrb: {fileID: 5539729512595594392, guid: 0a53623e0ee8ff647a0b662ea601bca3,
+    type: 3}
 --- !u!114 &7798674957962581304
 MonoBehaviour:
   m_ObjectHideFlags: 0
