@@ -6,6 +6,8 @@ public class EndState : MonoBehaviour
 {
     Sun sun;
     Moon moon;
+    Rotater rotator;
+    Camera cam;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,11 @@ public class EndState : MonoBehaviour
         {
             //end the game!
             Debug.Log("You win!");
+        }
+
+        if(sun.closeness >= 13 || moon.closeness >= 13)
+        {
+            Debug.Log("Crash Into Planet!");
         }
     }
 }
