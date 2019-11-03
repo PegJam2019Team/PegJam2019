@@ -23,7 +23,7 @@ public class EndState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(sun.closeness == 10 && moon.closeness == 10)
+        if(sun.closeness >= 10 && moon.closeness >= 10)
         {
             //end the game!
             //Debug.Log("You win!");
